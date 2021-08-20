@@ -13,13 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 
-from bonds_app.views import hello_world
+from rest_framework.authtoken.views import obtain_auth_token
+from bonds_app.views import hello_world, BondListCreateView
+
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
-    path('hello-world', hello_world, name='hello-world')
+    path('api/token/', obtain_auth_token, name='obtain-token'),
+    path('hello-world', hello_world, name='hello-world'),
+    path('bond-list-create/', BondListCreateView.as_view(), name='bond-list-create')
 ]
