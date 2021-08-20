@@ -1,0 +1,6 @@
+env_bonds
+static
+.vscode
+# Python bytecode
+__pycache__
+**/*.pyc
