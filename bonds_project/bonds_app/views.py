@@ -17,8 +17,25 @@ def hello_world(request):
     return JsonResponse(data)
 
 
+# class BondListView(generics.ListAPIView):
+#     serializer_class = BondSerializer
+#     queryset = Bond.objects.all()
+
+
+# class BondRetrieveView(generics.RetrieveAPIView):
+#     serializer_class = BondSerializer
+#     queryset = Bond.objects.all()
+
+
 class BondListCreateView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated, )
+
+    serializer_class = BondSerializer
+    queryset = Bond.objects.all()
+
+
+class BondRetrieveUpdateView(generics.RetrieveUpdateAPIView):
+    # permission_classes = (IsAuthenticated, )
 
     serializer_class = BondSerializer
     queryset = Bond.objects.all()
