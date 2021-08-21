@@ -1,34 +1,39 @@
 # Bonds project
 
-Bonds project es una api sencilla para intercambiar bonos, creada con Django Rest Framework.
+Bonds project is a simple API example written with Django Rest Framework, for trading bonbs.
 
 ## Enviroment
 
-Ambiente para ejecutar la aplicación 
+Create env
 
 ```bash
 pyhton -m venv env_bonds
 ```
 
-Activar el ambiente
+Activate env
 
 ```bash
 .\env\Scripts\activate
 ```
 
+Install requirements
+
+```bash
+pip install -r requirements.txt
+```
 ## Usage
 
 ```bash
 cd bonds_project
 ```
 
-Migraciones
+Migrations
 
 ```bash
 python manage.py migrate
 ```
 
-Iniciar el server local
+Start local server
 
 ```bash
 python manage.py runserver
@@ -36,7 +41,7 @@ python manage.py runserver
 
 
 ## Contributing
-Pull requests son bienvenidos.
+Pull requests are welcome.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
