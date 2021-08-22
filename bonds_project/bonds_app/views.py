@@ -18,14 +18,14 @@ def hello_world(request):
 
 
 class BondListCreateView(generics.ListCreateAPIView):
-    # permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )
 
     serializer_class = BondSerializer
     queryset = Bond.objects.all()
 
 
 class BondRetrieveUpdateView(generics.RetrieveUpdateAPIView):
-    # permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )
 
     serializer_class = BondSerializer
     queryset = Bond.objects.all()
