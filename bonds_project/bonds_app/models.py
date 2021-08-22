@@ -9,6 +9,8 @@ class Bond(models.Model):
     total = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    owner = models.ForeignKey(
+        'auth.User', related_name='bonds', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

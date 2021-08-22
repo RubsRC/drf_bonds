@@ -3,6 +3,8 @@ from django.urls import path, include
 
 from rest_framework.authtoken.views import obtain_auth_token
 from bonds_app.views import (hello_world,
+                             UserList,
+                             UserDetail,
                              BondListCreateView,
                              BondRetrieveUpdateView)
 
@@ -14,7 +16,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', obtain_auth_token, name='obtain-token'),
     path('hello-world', hello_world, name='hello-world'),
-    path('api/bond/list-create/', BondListCreateView.as_view(), name='bond-list-create'),
-    path('api/bond/<int:pk>/retrieve-update/', BondRetrieveUpdateView.as_view(),
+    path('users/', UserList.as_view()),
+    path('users/<int:pk>/', UserDetail.as_view()),
+    path('api/bonds/', BondListCreateView.as_view(), name='bond-list-create'),
+    path('api/bonds/<int:pk>/', BondRetrieveUpdateView.as_view(),
          name='bond-retrieve-update')
 ]
