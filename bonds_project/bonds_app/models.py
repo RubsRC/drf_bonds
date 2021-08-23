@@ -11,6 +11,9 @@ class Bond(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(
         'auth.User', related_name='bonds', on_delete=models.CASCADE)
+    buyer = models.ForeignKey(
+        'auth.User', related_name='purchases', on_delete=models.CASCADE, blank=True,
+        null=True)
 
     def __str__(self):
         return self.name

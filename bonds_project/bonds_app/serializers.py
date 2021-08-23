@@ -14,10 +14,19 @@ class UserSerializer(serializers.ModelSerializer):
 
 class BondSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    buyer = serializers.ReadOnlyField(source='buyer.username')
+    buyer_id = serializers.IntegerField(source='buyer.user_id', required=False)
 
     class Meta:
         model = Bond
-        fields = ('id', 'name', 'price', 'total', 'owner')
+        fields = ('id', 'name', 'price', 'total', 'owner', 'buyer', 'buyer_id')
+
+    def update(self, instance, validated_data):
+        if instance.buyer_id != None :
+            raise serializers.ValidationError("Invalid operation. This bond has already been bought")
+        buyer_id = validated_data.pop('buyer')
+        instance.buyer_id = buyer_id['user_id']
+        return super().update(instance, validated_data)
 
     def validate_name(self, value):
         if len(value) < 3:
